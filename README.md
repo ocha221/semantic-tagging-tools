@@ -1,6 +1,9 @@
 # semantic-tagging-tools
 simple tag expander/merger based on what's found within a tagged dataset
 
+info on faiss: https://github.com/facebookresearch/faiss/wiki/
+
+
 Examples:
 
 <img width="472" alt="ex1" src="https://github.com/user-attachments/assets/5bf28e02-3fba-4015-adae-77679a701643" />
