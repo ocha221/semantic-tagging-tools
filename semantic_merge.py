@@ -45,7 +45,7 @@ def generate_embeddings(mimi: Mistral, tags: List[str]) -> np.ndarray:
                 inputs=tags,
             )
             embeddings = np.array([data.embedding for data in response.data]).astype(
-                "float64"
+                "float32"
             )
             faiss.normalize_L2(embeddings)
             progress.update(task, completed=1)
@@ -947,15 +947,15 @@ def main():
 
     for idx, tag in enumerate(all_tags):
         query_embedding = embeddings[idx].reshape(1, -1)
-        distances, indices = index.search(query_embedding, 11)
+        distances, indices = index.search(query_embedding, 11) #! change this to get more neighbours
         candidates = [
             all_tags[i]
             for i, dist in zip(indices[0], distances[0])
             if all_tags[i] != tag and dist < 0.65
-        ][:10]
+        ][:10] #! and change this to include more results 
 
         if candidates:
-            batches = process_tag_candidates(tag, candidates)
+            batches = process_tag_candidates(tag, candidates, batch_size=20) #! check readme
             tag_candidates_map[tag] = batches
             total_tasks += len(batches)
 
