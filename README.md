@@ -16,6 +16,8 @@ the model you use for synonym matching will HEAVILY influence the results you ge
 ## Thoughts
 I used mistral-small as its free and good enough for the task, though it will make mistakes sometimes. If you used something bigger (like Qwen 32+B, or Claude) you will get better results, as they're smarter models.
 
+i believe normalising before feeding the vectors to fass is *probably* uncesesary, but testing with it on seemed better than without
+
 Currently, the program will go through the list and if necessary try to batch the candidate (for my testing i set batch size and k neighbours to 10 so it'll never show, please change this). this means that if word X has 200 candidates, and you have a batch size of 100, the llm would get two batches of 100 and add the synonyms at the end, though you might wanna mess with the semantic threshold a little so you dont get too many overlapping candidates.
 
 
