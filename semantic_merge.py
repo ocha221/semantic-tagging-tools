@@ -126,7 +126,7 @@ Valid output: {"metal": ["material", "substance"]}  # only parent categories, NO
 
 Input: "dog"
 Candidates: "poodle, animal, pet, mammal, canine"
-Valid output: {"dog": ["animal", "mammal"]}  # only parent categories
+Valid output: {"dog": ["animal", "mammal", "canine"]}  # only parent categories
 
 Only use the words provided in the candidates list. Do NOT add any new words.
 Reply with EXACTLY: {
